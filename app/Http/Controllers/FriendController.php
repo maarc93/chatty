@@ -12,7 +12,7 @@ class FriendController extends Controller
 	{
 		$friends = Auth::user()->friends();
 		$requests = Auth::user()->friendRequests();
-		
+
 		return view('friends.index')
 			->with('friends', $friends)
 			->with('requests', $requests);
@@ -26,6 +26,10 @@ class FriendController extends Controller
 			return redirect()
 				->route('home')
 				->with('info', 'That user could not be found');
+		}
+
+		if (Auth::user()-> id == $user->id) {
+			return redirect()->route('home');
 		}
 
 		if (Auth::user()->hasFriendRequestPending($user) || $user->hasFriendRequestPending(Auth::user())) {
@@ -65,6 +69,6 @@ class FriendController extends Controller
 
 		return redirect()
 			->route('profile.index', ['username' => $username])
-			->with('info', 'Friend request accepted');;
+			->with('info', 'Friend request accepted');
 	}
 }

@@ -12,8 +12,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 
-        'email', 
+        'username',
+        'email',
         'password',
         'first_name',
         'last_name',
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 
+        'password',
         'remember_token',
     ];
 
@@ -56,6 +56,11 @@ class User extends Authenticatable
     public function getAvatarUrl()
     {
         return "http://www.gravatar.com/avatar/{{ md5($this->email) }}?d=mm&s=40";
+    }
+
+    public function statuses()
+    {
+        return $this->hasMany('Chatty\Models\Status', 'user_id');
     }
 
     public function friendsOfMine()

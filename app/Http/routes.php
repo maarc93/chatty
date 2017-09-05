@@ -77,4 +77,11 @@ Route::group(['middleware' => ['web']], function () {
 		'middleware' => ['auth'],
 	]);
 
+
+	Route::post('/status', [
+		'uses' => '\Chatty\Http\Controllers\StatusController@postStatus',
+		'as' => 'status.post',
+		'middleware' => ['auth']
+	]);
+
 });
