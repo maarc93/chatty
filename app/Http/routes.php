@@ -59,6 +59,8 @@ Route::group(['middleware' => ['web']], function () {
 		'middleware' => ['auth'],
 	]);
 
+	// Friends
+
 	Route::get('/friends', [
 		'uses' => '\Chatty\Http\Controllers\FriendController@getIndex',
 		'as' => 'friend.index',
@@ -74,6 +76,12 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/friends/accept/{username}', [
 		'uses' => '\Chatty\Http\Controllers\FriendController@getAccept',
 		'as' => 'friend.accept',
+		'middleware' => ['auth'],
+	]);
+
+	Route::post('/friends/delete/{username}', [
+		'uses' => '\Chatty\Http\Controllers\FriendController@postDelete',
+		'as' => 'friend.delete',
 		'middleware' => ['auth'],
 	]);
 
