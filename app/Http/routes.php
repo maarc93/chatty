@@ -91,4 +91,10 @@ Route::group(['middleware' => ['web']], function () {
 		'middleware' => ['auth']
 	]);
 
+	Route::get('/status/{statusId}/like', [
+		'uses' => '\Chatty\Http\Controllers\StatusController@getLike',
+		'as' => 'status.like',
+		'middleware' => ['auth']
+	]);
+
 });
