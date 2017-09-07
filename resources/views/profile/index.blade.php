@@ -7,7 +7,7 @@
 			<hr>
 
 			@if (!$statuses->count())
-                <p>{{ $user->getFirstNameOrUsername }} hasn't posted anything yet.</p>
+                <p>{{ $user->getFirstNameOrUsername() }} hasn't posted anything yet.</p>
             @else
                 @foreach ($statuses as $status)
                     <div class="media">
