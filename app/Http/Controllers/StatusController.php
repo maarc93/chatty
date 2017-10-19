@@ -48,7 +48,7 @@ class StatusController extends Controller
 
         $status->replies()->save($reply);
 
-        return redirect()->back();
+        return back();
     }
 
     public function getLike($statusId)
@@ -64,12 +64,12 @@ class StatusController extends Controller
         }
 
         if (Auth::user()->hasLikedStatus($status)) {
-            return redirect()->back();
+            return back();
         }
 
         $like = $status->likes()->create([]);
         Auth::user()->likes()->save($like);
 
-        return redirect()->back();
+        return back();
     }
 }

@@ -77,11 +77,11 @@ class FriendController extends Controller
 		$user = User::where('username', $username)->first();
 
 		if (!Auth::user()->isFriendsWith($user)) {
-			return redirect()->back();
+			return back();
 		}
 
 		Auth::user()->deleteFriend($user);
 
-		return redirect()->back()->with('info', 'Friend deleted.');
+		return back()->with('info', 'Friend deleted.');
 	}
 }
