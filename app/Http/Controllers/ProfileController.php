@@ -16,7 +16,7 @@ class ProfileController extends Controller
 			abort(404);
 		}
 
-		$statuses = $user->statuses()->notReply()->get();
+		$statuses = $user->statuses()->notReply()->latest()->get();
 
 		return view('profile.index')
 			->with('user', $user)
